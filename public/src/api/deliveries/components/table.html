@@ -1,0 +1,42 @@
+<style>
+  .info {
+    height: 330px;
+    overflow: scroll;
+  }
+  .table {
+    width: 800px;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div class="info" layout-padding>
+  <p>Total customers: {{clients.length}}</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th align="left">Name</th>
+        <th align="left">Street</th>
+        <th align="left">City</th>
+        <th align="left">Country</th>
+        <th align="left">Weight</th>
+        <th align="left">Lat</th>
+        <th align="left">Lng</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="item in clients">
+        <td>{{item.client_name}}</td>
+        <td>{{item.address.route}}</td>
+        <td>{{item.address.state}}</td>
+        <td>{{item.address.country}}</td>
+        <td>{{item.weight}}</td>
+        <td align="left">{{item.address.geometry.lat}}</td>
+        <td align="left">{{item.address.geometry.lng}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

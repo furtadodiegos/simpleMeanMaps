@@ -1,0 +1,8 @@
+{
+  "development": {
+    "MONGODB_URI": "mongodb://localhost:27017/deliveries"
+  },
+  "test": {
+    "MONGODB_URI": "mongodb://localhost:27017/deliveries_test"
+  }
+}

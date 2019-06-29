@@ -1,0 +1,41 @@
+<style>
+  .md-sidenav-left {
+    height: calc(100vh - 64px);
+    z-index: 9999;
+  }
+  .sidenav-toolbar {
+    background: transparent !important;
+  }
+  .sidenav-toolbar--title {
+    color: #000;
+  }
+
+  @media (max-width: 512px) {
+    .md-sidenav-left {
+      height: 100vh;
+    }
+  }
+</style>
+
+<md-sidenav
+  class="md-sidenav-left"
+  md-component-id="left"
+  md-is-locked-open="$mdMedia('gt-md')"
+  md-whiteframe="4"
+>
+  <md-toolbar class="sidenav-toolbar">
+    <div layout="row" layout-align="space-between center">
+      <h1 class="md-toolbar-tools sidenav-toolbar--title">Form</h1>
+
+      <md-button
+        ng-click="close()"
+        class="md-icon-button md-primary"
+        hide-gt-sm
+      >
+        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <div ng-include="'src/api/deliveries/components/form.html'"></div>
+</md-sidenav>

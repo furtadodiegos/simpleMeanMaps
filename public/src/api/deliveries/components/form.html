@@ -1,0 +1,78 @@
+<style>
+  .form-btn {
+    width: 100%;
+    margin: 0;
+  }
+  .form-btn--valid {
+    background: green !important;
+    color: white !important;
+  }
+  .form-btn--delete {
+    background: red !important;
+    color: white !important;
+    margin-top: 20px;
+  }
+</style>
+
+<md-content flex layout-padding>
+  <form name="form" ng-submit="submit()">
+    <md-input-container class="md-block">
+      <label>Client Name</label>
+      <input ng-model="data.client_name" type="text" required />
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Weight</label>
+      <input ng-model="data.weight" type="number" required />
+    </md-input-container>
+
+    <md-autocomplete
+      class="md-block"
+      flex-gt-sm
+      ng-required="data.formatted_address"
+      md-no-cache="noCache"
+      md-selected-item="selectedItem"
+      md-search-text="searchText"
+      md-selected-item-change="selectedItemChange(item)"
+      md-items="item in querySearch(searchText)"
+      md-item-text="item.formatted_address"
+      md-min-length="3"
+      md-delay="1000"
+      md-floating-label="Address"
+    >
+      <md-item-template>
+        <span md-highlight-text="searchText" md-highlight-flags="^i"
+          >{{item.formatted_address}}</span
+        >
+      </md-item-template>
+    </md-autocomplete>
+
+    <div layout="row" layout-align="space-between" layout-padding>
+      <md-input-container>
+        <label>Latitude</label>
+        <input ng-model="data.address.geometry.location.lat" type="text" disabled />
+      </md-input-container>
+
+      <md-input-container>
+        <label>Longitude</label>
+        <input ng-model="data.address.geometry.location.lng" type="text" disabled />
+      </md-input-container>
+    </div>
+
+    <md-button
+      class="md-raised form-btn"
+      type="submit"
+      ng-disabled="form.$invalid || loading"
+      ng-class="{'form-btn--valid':form.$valid}"
+      >save client</md-button
+    >
+    <md-progress-linear
+      ng-if="loading"
+      md-mode="indeterminate"
+    ></md-progress-linear>
+
+    <md-button class="md-raised form-btn form-btn--delete" ng-click="delete()">
+      reset registrations
+    </md-button>
+  </form>
+</md-content>
