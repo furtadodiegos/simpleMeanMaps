@@ -1,0 +1,54 @@
+<style>
+  #map {
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+  }
+  .whiteframe {
+    width: 100%;
+    margin: 50px 0 0 0;
+  }
+  .section-border {
+    border-radius: 20px;
+  }
+  .toolbar-btn {
+    color: #fff ;
+  }
+
+  @media (max-width: 512px) {
+    #map {
+      margin: 0;
+      border-radius: 0;
+      border: none;
+    }
+    .whiteframe {
+      margin: 0;
+    }
+  }
+</style>
+
+<md-toolbar class="md-hue-2">
+  <div class="md-toolbar-tools">
+    <h2 flex md-truncate>RoutEasy</h2>
+
+    <md-button ng-click="open()" class="md-icon-button toolbar-btn" hide-gt-sm>
+      <i class="fa fa-align-right fa-2x" aria-hidden="true"></i>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<section layout="row" flex>
+  <div ng-include="'src/api/deliveries/components/sidenav.html'"></div>
+
+  <div layout="column" layout-align="start center" class="whiteframe">
+    <md-whiteframe
+      class="md-whiteframe-12dp section-border"
+      layout="row"
+      layout-align="center start"
+    >
+      <div id="map" class="section-border"></div>
+    </md-whiteframe>
+
+    <div ng-include="'src/api/deliveries/components/table.html'"></div>
+  </div>
+</section>
