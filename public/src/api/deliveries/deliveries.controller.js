@@ -57,5 +57,5 @@ function deliveriesController(
 function getAddress(address) {
   return `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
     address
-  )}&region=br&key=AIzaSyDm6wJwreWxnMrsv-k9-kxr0gQ23GfjvGw`;
+  )}&region=br&key=$key`;
 }
